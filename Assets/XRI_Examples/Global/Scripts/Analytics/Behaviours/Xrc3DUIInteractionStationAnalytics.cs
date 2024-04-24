@@ -1,4 +1,4 @@
-
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace UnityEngine.XR.Content.Interaction.Analytics
 {
@@ -39,10 +39,10 @@ namespace UnityEngine.XR.Content.Interaction.Analytics
         XRPushButton m_ClawMachinePushButton;
 
         [SerializeField]
-        UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor m_UfoGrabberSocket;
+        XRSocketInteractor m_UfoGrabberSocket;
 
         [SerializeField]
-        UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable[] m_PrizeInteractables;
+        XRBaseInteractable[] m_PrizeInteractables;
 
         void Awake()
         {

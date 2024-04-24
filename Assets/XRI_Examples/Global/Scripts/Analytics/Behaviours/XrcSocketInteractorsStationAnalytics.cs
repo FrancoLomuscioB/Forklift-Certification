@@ -1,4 +1,4 @@
-
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace UnityEngine.XR.Content.Interaction.Analytics
 {
@@ -11,14 +11,14 @@ namespace UnityEngine.XR.Content.Interaction.Analytics
     {
         [Header("Socket Simple Object Substation")]
         [SerializeField]
-        UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor m_SimpleSocket;
+        XRSocketInteractor m_SimpleSocket;
 
         [Header("Perler Machine")]
         [SerializeField]
-        UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor m_BatterySlotSocket;
+        XRSocketInteractor m_BatterySlotSocket;
 
         [SerializeField]
-        UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor[] m_InfinityPegSockets;
+        XRSocketInteractor[] m_InfinityPegSockets;
 
         [SerializeField]
         Transform m_GridCenter;
@@ -34,14 +34,14 @@ namespace UnityEngine.XR.Content.Interaction.Analytics
             {
                 foreach (var interactable in socket.interactablesSelected)
                 {
-                    XrcAnalyticsUtils.Register(interactable as UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable, grabPerlerBeadParameter);
+                    XrcAnalyticsUtils.Register(interactable as XRBaseInteractable, grabPerlerBeadParameter);
                 }
 
-                socket.selectEntered.AddListener(args => XrcAnalyticsUtils.Register(args.interactableObject as UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable, grabPerlerBeadParameter));
+                socket.selectEntered.AddListener(args => XrcAnalyticsUtils.Register(args.interactableObject as XRBaseInteractable, grabPerlerBeadParameter));
             }
 
             var connectPerlerBeadParameter = new ConnectPerlerBead();
-            foreach (var gridSocket in m_GridCenter.GetComponentsInChildren<UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor>())
+            foreach (var gridSocket in m_GridCenter.GetComponentsInChildren<XRSocketInteractor>())
                 XrcAnalyticsUtils.Register(gridSocket, connectPerlerBeadParameter);
         }
     }

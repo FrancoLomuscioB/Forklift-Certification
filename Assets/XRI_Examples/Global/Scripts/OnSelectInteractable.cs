@@ -9,7 +9,7 @@ namespace UnityEngine.XR.Content.Interaction
     {
         [SerializeField]
         [Tooltip("The interactable that is checked for selection.")]
-        UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable m_TargetInteractable;
+        XRBaseInteractable m_TargetInteractable;
 
         [SerializeField]
         [Tooltip("The function to call when the interactable is selected.")]

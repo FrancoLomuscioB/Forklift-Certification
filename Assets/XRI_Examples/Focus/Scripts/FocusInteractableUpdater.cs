@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace UnityEngine.XR.Content.Interaction
 {
@@ -10,24 +10,24 @@ namespace UnityEngine.XR.Content.Interaction
     public class FocusInteractableUpdater : MonoBehaviour
     {
         [SerializeField, Tooltip("Left interaction group to check for focused interactables.")]
-        UnityEngine.XR.Interaction.Toolkit.Interactors.XRInteractionGroup m_LeftInteractionGroup;
+        XRInteractionGroup m_LeftInteractionGroup;
 
         /// <summary>
         /// Left interaction group to check for focused interactables.
         /// </summary>
-        public UnityEngine.XR.Interaction.Toolkit.Interactors.XRInteractionGroup leftInteractionGroup
+        public XRInteractionGroup leftInteractionGroup
         {
             get => m_LeftInteractionGroup;
             set => m_LeftInteractionGroup = value;
         }
 
         [SerializeField, Tooltip("Right interaction group to check for focused interactables.")]
-        UnityEngine.XR.Interaction.Toolkit.Interactors.XRInteractionGroup m_RightInteractionGroup;
+        XRInteractionGroup m_RightInteractionGroup;
 
         /// <summary>
         /// Right interaction group to check for focused interactables.
         /// </summary>
-        public UnityEngine.XR.Interaction.Toolkit.Interactors.XRInteractionGroup rightInteractionGroup
+        public XRInteractionGroup rightInteractionGroup
         {
             get => m_RightInteractionGroup;
             set => m_RightInteractionGroup = value;
@@ -45,11 +45,11 @@ namespace UnityEngine.XR.Content.Interaction
             set => m_FocusMeshes = value;
         }
 
-        readonly List<UnityEngine.XR.Interaction.Toolkit.Interactables.IXRFocusInteractable> m_FocusInteractables = new List<UnityEngine.XR.Interaction.Toolkit.Interactables.IXRFocusInteractable>();
+        readonly List<IXRFocusInteractable> m_FocusInteractables = new List<IXRFocusInteractable>();
 
         void Start()
         {
-            foreach (var interactable in GetComponentsInChildren<UnityEngine.XR.Interaction.Toolkit.Interactables.IXRFocusInteractable>())
+            foreach (var interactable in GetComponentsInChildren<IXRFocusInteractable>())
             {
                 m_FocusInteractables.Add(interactable);
             }

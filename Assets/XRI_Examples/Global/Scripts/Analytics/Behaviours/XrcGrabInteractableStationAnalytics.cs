@@ -1,4 +1,4 @@
-
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace UnityEngine.XR.Content.Interaction.Analytics
 {
@@ -16,31 +16,31 @@ namespace UnityEngine.XR.Content.Interaction.Analytics
 
         [Header("Simple Object Substation")]
         [SerializeField]
-        UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable[] m_InstantInteractables;
+        XRBaseInteractable[] m_InstantInteractables;
 
         [SerializeField]
-        UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable[] m_KinematicInteractables;
+        XRBaseInteractable[] m_KinematicInteractables;
 
         [SerializeField]
-        UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable[] m_VelocityInteractables;
+        XRBaseInteractable[] m_VelocityInteractables;
 
         [Header("Watering Can Substation")]
         [SerializeField]
-        UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable m_WateringCanInteractable;
+        XRBaseInteractable m_WateringCanInteractable;
 
         [SerializeField]
         OnTrigger m_OnPlantGrowsTrigger;
 
         [Header("Piggy Bank Substation")]
         [SerializeField]
-        UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable m_MalletInteractable;
+        XRBaseInteractable m_MalletInteractable;
 
         [SerializeField]
         GameObject m_PigBank;
 
         [Header("Ribbon Stick Substation")]
         [SerializeField]
-        UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable m_RibbonStickInteractable;
+        XRBaseInteractable m_RibbonStickInteractable;
 
         float m_TimeToSendWateringPlant;
 

@@ -8,7 +8,7 @@ namespace UnityEngine.XR.Content.Interaction
     /// it loses the current selected interactable.
     /// </summary>
     [DisallowMultipleComponent]
-    [RequireComponent(typeof(UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor))]
+    [RequireComponent(typeof(XRBaseInteractor))]
     public class XRInfiniteInteractable : MonoBehaviour
     {
         [SerializeField]
@@ -22,9 +22,9 @@ namespace UnityEngine.XR.Content.Interaction
 
         [SerializeField]
         [Tooltip("The Prefab or GameObject to be instantiated and selected.")]
-        UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable m_InteractablePrefab;
+        XRBaseInteractable m_InteractablePrefab;
 
-        UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor m_Interactor;
+        XRBaseInteractor m_Interactor;
 
         /// <summary>
         /// Whether infinite spawning is enabled.
@@ -43,7 +43,7 @@ namespace UnityEngine.XR.Content.Interaction
 
         void Awake()
         {
-            m_Interactor = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor>();
+            m_Interactor = GetComponent<XRBaseInteractor>();
 
             if (m_OverrideStartingSelectedInteractable)
                 OverrideStartingSelectedInteractable();
@@ -73,7 +73,7 @@ namespace UnityEngine.XR.Content.Interaction
             InstantiateAndSelectInteractable();
         }
 
-        UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable InstantiateInteractable()
+        XRBaseInteractable InstantiateInteractable()
         {
             var socketTransform = m_Interactor.transform;
             return Instantiate(m_InteractablePrefab, socketTransform.position, socketTransform.rotation);
@@ -89,7 +89,7 @@ namespace UnityEngine.XR.Content.Interaction
             if (!gameObject.activeInHierarchy || m_Interactor.interactionManager == null)
                 return;
 
-            m_Interactor.interactionManager.SelectEnter((UnityEngine.XR.Interaction.Toolkit.Interactors.IXRSelectInteractor)m_Interactor, InstantiateInteractable());
+            m_Interactor.interactionManager.SelectEnter((IXRSelectInteractor)m_Interactor, InstantiateInteractable());
         }
     }
 }

@@ -1,4 +1,4 @@
-
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace UnityEngine.XR.Content.Interaction.Analytics
 {
@@ -15,30 +15,30 @@ namespace UnityEngine.XR.Content.Interaction.Analytics
 
         [Header("Physics Simple Controls Substation")]
         [SerializeField]
-        UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable[] m_SpringInteractables;
+        XRBaseInteractable[] m_SpringInteractables;
 
         [SerializeField]
-        UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable[] m_HingeInteractables;
+        XRBaseInteractable[] m_HingeInteractables;
 
         [Header("Cabinet Example Substation")]
         [SerializeField]
-        UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable m_Cabinet1Interactable;
+        XRBaseInteractable m_Cabinet1Interactable;
 
         [SerializeField]
-        UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable m_Cabinet2Interactable;
+        XRBaseInteractable m_Cabinet2Interactable;
 
         [Header("Doors Example Substation")]
         [SerializeField]
         Rigidbody m_FlipDoorRigidbody;
 
         [SerializeField]
-        UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable m_DoorKeyInteractable;
+        XRBaseInteractable m_DoorKeyInteractable;
 
         [SerializeField]
         Door m_DoorLocked;
 
         [SerializeField]
-        UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable m_DoorHandleInteractable;
+        XRBaseInteractable m_DoorHandleInteractable;
 
         float m_TimeToSendPushFlopDoor;
 

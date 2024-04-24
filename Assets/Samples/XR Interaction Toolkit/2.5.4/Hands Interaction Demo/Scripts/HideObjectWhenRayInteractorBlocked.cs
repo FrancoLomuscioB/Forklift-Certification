@@ -7,7 +7,7 @@
     {
         [SerializeField]
         [Tooltip("The XRRayInteractor that this component monitors for blockages.")]
-        UnityEngine.XR.Interaction.Toolkit.Interactors.XRRayInteractor m_Interactor;
+        XRRayInteractor m_Interactor;
 
         [SerializeField]
         [Tooltip("The GameObject to hide when the XRRayInteractor is blocked.")]

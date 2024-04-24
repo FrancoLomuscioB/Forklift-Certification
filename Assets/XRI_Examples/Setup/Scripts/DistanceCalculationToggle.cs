@@ -1,5 +1,5 @@
 using UnityEngine.UI;
-
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace UnityEngine.XR.Content.Interaction
 {
@@ -9,7 +9,7 @@ namespace UnityEngine.XR.Content.Interaction
         Toggle m_Toggle;
 
         [SerializeField]
-        UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable[] m_Interactables;
+        XRBaseInteractable[] m_Interactables;
 
         void Start()
         {
@@ -23,8 +23,8 @@ namespace UnityEngine.XR.Content.Interaction
         void OnToggleValueChanged(bool value)
         {
             var distanceCalculationMode = value
-                ? UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable.DistanceCalculationMode.ColliderVolume
-                : UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable.DistanceCalculationMode.ColliderPosition;
+                ? XRBaseInteractable.DistanceCalculationMode.ColliderVolume
+                : XRBaseInteractable.DistanceCalculationMode.ColliderPosition;
 
             foreach (var interactable in m_Interactables)
             {
