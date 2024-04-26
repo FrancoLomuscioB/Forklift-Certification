@@ -6,8 +6,7 @@ using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour
 {
    
- 
-        public void ExitButton()
+       public void ExitButton()
         {
             Application.Quit();
             Debug.Log("Game closed");
@@ -15,9 +14,9 @@ public class Menu : MonoBehaviour
 
         public void StartGame()
         {
-            SceneManager.LoadScene("levels");
+            SceneManager.LoadScene("Levels");
+        Debug.Log("cai en la locura");
         }
-  
-
+ 
    
 }
