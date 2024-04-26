@@ -33,7 +33,7 @@ Material:
   stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
-  m_LockedProperties: 
+  m_LockedProperties: :m_EnableInstancingVariants
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -110,7 +110,7 @@ Material:
     - _AddPrecomputedVelocity: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _Ambient: 0
+    - _Ambient: -0.12
     - _AmbientOclussion: 1
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
@@ -141,27 +141,27 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _RampLevels: 2
-    - _RampOffset_1: 0
+    - _RampOffset_1: 1
     - _RampSmooth: 0
     - _ReceiveShadows: 1
     - _RimAlpha: 0
     - _RimBrightness: 1
     - _RimDropOff: 0
-    - _RimPower: 0
+    - _RimPower: 2.44
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _Toon_Ramp_Offset_Point: 0
+    - _Toon_Ramp_Offset_Point: 0.44
     - _UVSec: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Basecolor: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.4811321, g: 0.20978613, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _FresnelColor: {r: 1, g: 1, b: 1, a: 1}
     - _HighColor: {r: 1, g: 1, b: 1, a: 1}
