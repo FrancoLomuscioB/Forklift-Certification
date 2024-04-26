@@ -975,6 +975,7 @@ GameObject:
   - component: {fileID: 767908256}
   - component: {fileID: 767908255}
   - component: {fileID: 767908254}
+  - component: {fileID: 767908257}
   m_Layer: 5
   m_Name: sALIR
   m_TagString: Untagged
@@ -1045,7 +1046,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 767908255}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 971553783}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: ExitButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &767908255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1084,6 +1097,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 767908252}
   m_CullTransparentMesh: 1
+--- !u!65 &767908257
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767908252}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 30, y: 10, z: 45.06}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &971553777
 GameObject:
   m_ObjectHideFlags: 0
@@ -1097,6 +1131,7 @@ GameObject:
   - component: {fileID: 971553780}
   - component: {fileID: 971553779}
   - component: {fileID: 971553778}
+  - component: {fileID: 971553783}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1122,7 +1157,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RaycastTriggerInteraction: 1
+  m_RaycastTriggerInteraction: 2
 --- !u!114 &971553779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1208,6 +1243,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &971553783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971553777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d9d3464fc5675f4ab7a4dbf64e080ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &991493036
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2316,6 +2363,7 @@ GameObject:
   - component: {fileID: 1592903068}
   - component: {fileID: 1592903067}
   - component: {fileID: 1592903066}
+  - component: {fileID: 1592903069}
   m_Layer: 5
   m_Name: inicio
   m_TagString: Untagged
@@ -2386,7 +2434,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1592903067}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 971553783}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1592903067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2425,6 +2485,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1592903064}
   m_CullTransparentMesh: 1
+--- !u!65 &1592903069
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592903064}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 30, y: 10, z: 45.06}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1638746447
 GameObject:
   m_ObjectHideFlags: 0
