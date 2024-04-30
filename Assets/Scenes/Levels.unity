@@ -490,6 +490,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3123974772231148146, guid: d422055f733a961409c8b1e262bf8ee0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3977493139563623539, guid: d422055f733a961409c8b1e262bf8ee0, type: 3}
       propertyPath: m_Texture
       value: 
@@ -611,7 +615,7 @@ PrefabInstance:
     - {fileID: 451549010527975525, guid: d422055f733a961409c8b1e262bf8ee0, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7519978212149755041, guid: d422055f733a961409c8b1e262bf8ee0, type: 3}
-      insertIndex: -1
+      insertIndex: 0
       addedObject: {fileID: 1263710033}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3123974772231148146, guid: d422055f733a961409c8b1e262bf8ee0, type: 3}
@@ -1436,7 +1440,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1263710032}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.27, y: 0.27, z: 0.27}
   m_ConstrainProportionsScale: 1
   m_Children: []
