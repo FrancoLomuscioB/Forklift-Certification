@@ -6,15 +6,14 @@ using System.Collections.Generic;
 public class SimpleCarController : MonoBehaviour
 {
     public List<AxleInfo> axleInfos;
-    public float maxMotorTorque;
-    public float maxSteeringAngle;
-    public float currentSteeringAngle;
+    public float maxMotorTorque, gasInput, breakInput, clutchInput, maxSteeringAngle, currentSteeringAngle, currentGear, motorForce, rigiVelocity;
+    public Rigidbody yaleRigi;
     LogitechGSDK.LogiControllerPropertiesData properties;
-    public float gasInput, breakInput, clutchInput;
 
     private void Start()
     {
         print(LogitechGSDK.LogiSteeringInitialize(false));
+        currentGear = 0;
     }
     // finds the corresponding visual wheel
     // correctly applies the transform
@@ -37,6 +36,25 @@ public class SimpleCarController : MonoBehaviour
 
     public void Update()
     {
+        rigiVelocity = yaleRigi.velocity.magnitude;
+        if(rigiVelocity == 0)
+        {
+            if(clutchInput == 1)
+            {
+                if (Input.GetKeyDown(KeyCode.Alpha1))
+                {
+                    currentGear = 1;
+                }
+                if (Input.GetKeyDown(KeyCode.Alpha2))
+                {
+                    currentGear = 0;
+                }
+                if (Input.GetKeyDown(KeyCode.Alpha3))
+                {
+                    currentGear = -1;
+                }
+            }
+        }
         if (LogitechGSDK.LogiUpdate() && LogitechGSDK.LogiIsConnected(0))
         {
             LogitechGSDK.DIJOYSTATE2ENGINES rec;
@@ -68,8 +86,21 @@ public class SimpleCarController : MonoBehaviour
 
     public void FixedUpdate()
     {
-        float motor = maxMotorTorque * gasInput;
         float steering = maxSteeringAngle * currentSteeringAngle;
+        switch (currentGear)
+        {
+            case 1:
+                motorForce = maxMotorTorque * gasInput;
+                break;
+
+            case 0:
+                motorForce = 0;
+                break;
+
+            case -1:
+                motorForce = maxMotorTorque * gasInput * -1;
+                break;
+        }
         foreach (AxleInfo axleInfo in axleInfos)
         {
             if (breakInput == 1)
@@ -89,12 +120,12 @@ public class SimpleCarController : MonoBehaviour
             }
             if (axleInfo.motor)
             {
-                if(motor < 0)
+                if(motorForce < 0)
                 {
-                    motor = 0;
+                    motorForce = 0;
                 }
-                axleInfo.leftWheel.motorTorque = motor;
-                axleInfo.rightWheel.motorTorque = motor;
+                axleInfo.leftWheel.motorTorque = motorForce;
+                axleInfo.rightWheel.motorTorque = motorForce;
             }
         }
     }
@@ -103,6 +134,7 @@ public class SimpleCarController : MonoBehaviour
     {
         currentSteeringAngle = (2*f - 1);
     }
+
 }
 
 
