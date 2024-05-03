@@ -48,7 +48,7 @@ public class SimpleCarController : MonoBehaviour
         {
             breakInput =+ 10;
         }
-        if(rigiVelocity == 0)
+        if(rigiVelocity < 20)
         {
             if(clutchInput == 1)
             {
@@ -136,10 +136,7 @@ public class SimpleCarController : MonoBehaviour
             }
             if (axleInfo.motor)
             {
-                if(motorForce < 0)
-                {
-                    motorForce = 0;
-                }
+                
                 axleInfo.leftWheel.motorTorque = motorForce;
                 axleInfo.rightWheel.motorTorque = motorForce;
             }
