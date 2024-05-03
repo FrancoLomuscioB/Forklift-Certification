@@ -37,6 +37,7 @@ public class ForkController : MonoBehaviour {
         {
             float targetX = fork.transform.localPosition.x - speedTranslate * sideValue * Time.deltaTime;
             targetX = Mathf.Clamp(targetX, minX, maxX); // Aplicar límites de movimiento
+            Debug.Log(targetX);
             fork.transform.localPosition = new Vector3(targetX, fork.transform.localPosition.y, fork.transform.localPosition.z);
         }
 
@@ -44,6 +45,7 @@ public class ForkController : MonoBehaviour {
         {
             float targetX = fork.transform.localPosition.x + speedTranslate * sideValue * Time.deltaTime;
             targetX = Mathf.Clamp(targetX, minX, maxX); // Aplicar límites de movimiento
+            Debug.Log(targetX);
             fork.transform.localPosition = new Vector3(targetX, fork.transform.localPosition.y, fork.transform.localPosition.z);
         }
 
