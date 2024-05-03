@@ -18,6 +18,7 @@ public class ForkController : MonoBehaviour {
     public float maxRotationAngle;
     public float minRotateAngle;
     public float rotationSpeed;
+    private float rotationInput;
 
     public float elevValue, sideValue, rotationValue;
 
@@ -71,22 +72,22 @@ public class ForkController : MonoBehaviour {
         {
             moveFork = true;
         }
-        if (elevValue > 0.24f) // mover arriba
+        if (elevValue < -0.24f) // mover arriba
         {
             if (moveFork)
             {
-                fork.transform.localPosition = Vector3.MoveTowards(fork.transform.localPosition, maxY, speedTranslate * elevValue * Time.deltaTime);
+                fork.transform.localPosition = Vector3.MoveTowards(fork.transform.localPosition, new Vector3(fork.transform.localPosition.x, fork.transform.localPosition.y, maxY.z) , speedTranslate * elevValue * Time.deltaTime * -1f);
             }
             if (mastMoveTrue)
             {
                 mastElev.transform.localPosition = Vector3.MoveTowards(mastElev.transform.localPosition, maxYmast, speedTranslate * elevValue * Time.deltaTime);
             }
         }
-        if (elevValue < -0.24f) //mover abajo
+        if (elevValue > 0.24f) //mover abajo
         {
             if (moveFork)
             {
-                fork.transform.localPosition = Vector3.MoveTowards(fork.transform.localPosition, minY, speedTranslate * elevValue * Time.deltaTime * -1f);
+                fork.transform.localPosition = Vector3.MoveTowards(fork.transform.localPosition, new Vector3(fork.transform.localPosition.x, fork.transform.localPosition.y, minY.z), speedTranslate * elevValue * Time.deltaTime);
             }
             if (mastMoveTrue)
             {
@@ -97,32 +98,42 @@ public class ForkController : MonoBehaviour {
 
     void LiftRotation()
     {
-        float rotationInput = 0f;
-
         if (rotationValue > 0.24f)
         {
             rotationInput = -1f;
+            if (mastRot.transform.rotation.x >= maxRotationAngle)
+            {
+                mastRot.transform.Rotate(Vector3.right, rotationInput * rotationSpeed * rotationValue * Time.deltaTime);
+            }
         }
         else if (rotationValue < -0.24f)
         {
             rotationInput = 1f;
+            if(mastRot.transform.rotation.x <= minRotateAngle)
+            {
+                mastRot.transform.Rotate(Vector3.right, rotationInput * rotationSpeed * rotationValue * Time.deltaTime);
+            }
+        }
+        else
+        {
+            rotationInput = 0;
         }
 
         // Rotar el objeto en el eje X basado en la entrada del jugador
-        mastRot.transform.Rotate(Vector3.right, rotationInput * rotationSpeed * rotationValue * Time.deltaTime);
+        //mastRot.transform.Rotate(Vector3.right, rotationInput * rotationSpeed * rotationValue * Time.deltaTime);
 
         // Limitar la rotación en el eje X
-        float currentXRotation = fork.transform.localEulerAngles.x;
+        //float currentXRotation = fork.transform.localEulerAngles.x;
 
         // Ajustar el ángulo para que esté en el rango de 0 a 360 grados
-        if (currentXRotation > 180)
-            currentXRotation -= 360;
+        //if (currentXRotation > 180)
+            //currentXRotation -= 360;
 
         // Limitar la rotación entre los valores especificados
-        currentXRotation = Mathf.Clamp(currentXRotation, minRotateAngle, maxRotationAngle);
+        //currentXRotation = Mathf.Clamp(currentXRotation, minRotateAngle, maxRotationAngle);
 
         // Aplicar la nueva rotación al objeto
-        mastRot.transform.localEulerAngles = new Vector3(currentXRotation, fork.transform.localEulerAngles.y, fork.transform.localEulerAngles.z);
+       // mastRot.transform.localEulerAngles = new Vector3(currentXRotation, fork.transform.localEulerAngles.y, fork.transform.localEulerAngles.z);
 
 
     }

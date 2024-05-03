@@ -126,8 +126,11 @@ public class SimpleCarController : MonoBehaviour
             }
             if (breakInput == 0)
             {
-                axleInfo.leftWheel.brakeTorque = 0;
-                axleInfo.rightWheel.brakeTorque = 0;
+                if (!handBrake)
+                {
+                    axleInfo.leftWheel.brakeTorque = 0;
+                    axleInfo.rightWheel.brakeTorque = 0;
+                }
             }
             if (axleInfo.steering)
             {
@@ -152,7 +155,7 @@ public class SimpleCarController : MonoBehaviour
     {
         if (x < (-0.34))
         {
-            currentGear = 1;
+            currentGear = -1;
         }
         else if (x < 0.34f)
         {
@@ -160,7 +163,7 @@ public class SimpleCarController : MonoBehaviour
         }
         else if (0.34f < x)
         {
-            currentGear = -1;
+            currentGear = 1;
         }
     }
 

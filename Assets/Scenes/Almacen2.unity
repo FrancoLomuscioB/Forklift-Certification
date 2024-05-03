@@ -76186,8 +76186,8 @@ MonoBehaviour:
   minYmast: {x: 0, y: 0, z: 0}
   maxX: 0.3
   minX: -0.3
-  maxRotationAngle: 1
-  minRotateAngle: -5
+  maxRotationAngle: 5
+  minRotateAngle: -8
   rotationSpeed: 20
   elevValue: 0
   sideValue: 0
