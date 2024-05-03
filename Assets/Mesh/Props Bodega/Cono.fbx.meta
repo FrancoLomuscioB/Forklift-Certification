@@ -3,7 +3,17 @@ guid: 97f53e0237625824586caa5c2cea5801
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BlancoCono
+    second: {fileID: 2100000, guid: 71d13a5746122ab4c934b14c1b4a41f6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NaranjaCono
+    second: {fileID: 2100000, guid: f15e7eb42aa9403489e81cc60c26b2e4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
