@@ -22,7 +22,7 @@ public class ForkController : MonoBehaviour {
 
 
     private bool mastMoveTrue = false; //Activate or deactivate the movement of the mast
-    private bool mastXMoveTrue = false;
+    //private bool mastXMoveTrue = false;
 
     // Update is called once per frame
     void FixedUpdate()
