@@ -63,8 +63,8 @@ public class ForkController : MonoBehaviour {
 
     void LiftHeight()
     {
-        Debug.Log(mastMoveTrue);
-        if (fork.transform.localPosition.y >= maxYmast.y && fork.transform.localPosition.y < maxY.y)
+       
+        if (fork.transform.localPosition.z >= maxYmast.y && fork.transform.localPosition.z < maxY.z)
         {
             mastMoveTrue = true;
         }
@@ -74,7 +74,7 @@ public class ForkController : MonoBehaviour {
          
         }
 
-        if (fork.transform.localPosition.y <= maxYmast.y)
+        if (fork.transform.localPosition.z <= maxYmast.y)
         {
             mastMoveTrue = false;
         }
