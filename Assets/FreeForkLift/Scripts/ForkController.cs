@@ -22,6 +22,7 @@ public class ForkController : MonoBehaviour {
     public float elevValue, sideValue, rotationValue;
 
     private bool mastMoveTrue = false;
+    private bool moveFork = true;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -54,40 +55,44 @@ public class ForkController : MonoBehaviour {
     void LiftHeight()
     {
         Debug.Log(mastMoveTrue);
-        if (fork.transform.localPosition.y >= maxYmast.y && fork.transform.localPosition.y < maxY.y)
+        if (fork.transform.localPosition.z >= maxY.z)
         {
             mastMoveTrue = true;
         }
         else
         {
             mastMoveTrue = false;
-
         }
-
-        if (fork.transform.localPosition.y <= maxYmast.y)
+        if(mastElev.transform.localPosition.z > minYmast.z)
         {
-            mastMoveTrue = false;
+            moveFork = false;
         }
-
+        else
+        {
+            moveFork = true;
+        }
         if (elevValue > 0.24f) // mover arriba
         {
-            fork.transform.localPosition = Vector3.MoveTowards(fork.transform.localPosition, maxY, speedTranslate * elevValue * Time.deltaTime);
+            if (moveFork)
+            {
+                fork.transform.localPosition = Vector3.MoveTowards(fork.transform.localPosition, maxY, speedTranslate * elevValue * Time.deltaTime);
+            }
             if (mastMoveTrue)
             {
                 mastElev.transform.localPosition = Vector3.MoveTowards(mastElev.transform.localPosition, maxYmast, speedTranslate * elevValue * Time.deltaTime);
             }
-
         }
         if (elevValue < -0.24f) //mover abajo
         {
-            fork.transform.localPosition = Vector3.MoveTowards(fork.transform.localPosition, minY, speedTranslate * elevValue * Time.deltaTime);
+            if (moveFork)
+            {
+                fork.transform.localPosition = Vector3.MoveTowards(fork.transform.localPosition, minY, speedTranslate * elevValue * Time.deltaTime * -1f);
+            }
             if (mastMoveTrue)
             {
-                mastElev.transform.localPosition = Vector3.MoveTowards(mastElev.transform.localPosition, minYmast, speedTranslate * elevValue * Time.deltaTime);
-
+                mastElev.transform.localPosition = Vector3.MoveTowards(mastElev.transform.localPosition, minYmast, speedTranslate * elevValue * Time.deltaTime * -1f);
             }
         }
-
     }
 
     void LiftRotation()
