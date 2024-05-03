@@ -10,27 +10,48 @@ public class ForkController : MonoBehaviour {
     public Vector3 minY; //The minimum height of the platform
     public Vector3 maxYmast; //The maximum height of the mast
     public Vector3 minYmast; //The minimum height of the mast
-    public Transform targetRotaion;
-    public Vector3 maxRotX;
-    public Vector3 minRotX;
-    public Vector3 maxX;
-    public Vector3 minX;
+
+    [Header("Rotacion y desplazamiento fork")]
+    public float maxX;
+    public float minX;
+
+    public float maxRotationAngle;
+    public float minRotateAngle;
+    public float rotationSpeed;
+
     public float elevValue, sideValue, rotationValue;
 
-
-
-
-
-    private bool mastMoveTrue = false; //Activate or deactivate the movement of the mast
-    //private bool mastXMoveTrue = false;
+    private bool mastMoveTrue = false;
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        LiftHeight();
+        LiftRotation();
+        LiftLaterals();
+    }
 
+    void LiftLaterals()
+    {
+        if (sideValue > 0.24f) // mover izquierda
+        {
+            float targetX = fork.transform.localPosition.x - speedTranslate * sideValue * Time.deltaTime;
+            targetX = Mathf.Clamp(targetX, minX, maxX); // Aplicar límites de movimiento
+            fork.transform.localPosition = new Vector3(targetX, fork.transform.localPosition.y, fork.transform.localPosition.z);
+        }
+
+        if (sideValue < -0.24f) // mover derecha
+        {
+            float targetX = fork.transform.localPosition.x + speedTranslate * sideValue * Time.deltaTime;
+            targetX = Mathf.Clamp(targetX, minX, maxX); // Aplicar límites de movimiento
+            fork.transform.localPosition = new Vector3(targetX, fork.transform.localPosition.y, fork.transform.localPosition.z);
+        }
+
+    }
+
+    void LiftHeight()
+    {
         Debug.Log(mastMoveTrue);
-        Vector3 Rotmax = Vector3.RotateTowards(targetRotaion.forward, maxRotX, speedTranslate * Time.deltaTime, 0.0f);
-        Vector3 Rotmin = Vector3.RotateTowards(targetRotaion.forward, minRotX, speedTranslate * Time.deltaTime, 0.0f);
         if (fork.transform.localPosition.y >= maxYmast.y && fork.transform.localPosition.y < maxY.y)
         {
             mastMoveTrue = true;
@@ -46,61 +67,55 @@ public class ForkController : MonoBehaviour {
             mastMoveTrue = false;
         }
 
-        if (Input.GetKey(KeyCode.PageUp))
+        if (elevValue > 0.24f) // mover arriba
         {
-            //fork.Translate(Vector3.up * speedTranslate * Time.deltaTime);
-            fork.transform.localPosition = Vector3.MoveTowards(fork.transform.localPosition, maxY, speedTranslate * Time.deltaTime);
+            fork.transform.localPosition = Vector3.MoveTowards(fork.transform.localPosition, maxY, speedTranslate * elevValue * Time.deltaTime);
             if (mastMoveTrue)
             {
-                mast.transform.localPosition = Vector3.MoveTowards(mast.transform.localPosition, maxYmast, speedTranslate * Time.deltaTime);
+                mast.transform.localPosition = Vector3.MoveTowards(mast.transform.localPosition, maxYmast, speedTranslate * elevValue * Time.deltaTime);
             }
 
         }
-        if (Input.GetKey(KeyCode.PageDown))
+        if (elevValue < -0.24f) //mover abajo
         {
-            fork.transform.localPosition = Vector3.MoveTowards(fork.transform.localPosition, minY, speedTranslate * Time.deltaTime);
-
+            fork.transform.localPosition = Vector3.MoveTowards(fork.transform.localPosition, minY, speedTranslate * elevValue * Time.deltaTime);
             if (mastMoveTrue)
             {
-                mast.transform.localPosition = Vector3.MoveTowards(mast.transform.localPosition, minYmast, speedTranslate * Time.deltaTime);
+                mast.transform.localPosition = Vector3.MoveTowards(mast.transform.localPosition, minYmast, speedTranslate * elevValue * Time.deltaTime);
 
             }
-
         }
-        if (Input.GetKey(KeyCode.Q))
+
+    }
+
+    void LiftRotation()
+    {
+        float rotationInput = 0f;
+
+        if (rotationValue > 0.24f)
         {
-            targetRotaion.rotation = Quaternion.LookRotation(Rotmax);
-            if (mastMoveTrue)
-            {
-                mast.transform.localPosition = Vector3.MoveTowards(mast.transform.localPosition, maxYmast, speedTranslate * Time.deltaTime);
-            }
-
+            rotationInput = -1f;
         }
-        if (Input.GetKey(KeyCode.E))
+        else if (rotationValue < -0.24f)
         {
-            targetRotaion.rotation = Quaternion.LookRotation(Rotmin);
-            if (mastMoveTrue)
-            {
-                mast.transform.localPosition = Vector3.MoveTowards(mast.transform.localPosition, minYmast, speedTranslate * Time.deltaTime);
-
-            }
-
+            rotationInput = 1f;
         }
 
-        if (Input.GetKey(KeyCode.Alpha1))
-        {
-            fork.transform.localPosition += Vector3.left * speedTranslate * Time.deltaTime;
+        // Rotar el objeto en el eje X basado en la entrada del jugador
+        mast.transform.Rotate(Vector3.right, rotationInput * rotationSpeed * rotationValue * Time.deltaTime);
 
+        // Limitar la rotación en el eje X
+        float currentXRotation = fork.transform.localEulerAngles.x;
 
-        }
+        // Ajustar el ángulo para que esté en el rango de 0 a 360 grados
+        if (currentXRotation > 180)
+            currentXRotation -= 360;
 
-        if (Input.GetKey(KeyCode.Alpha3))
-        {
-            // fork.transform.localPosition = Vector3.MoveTowards(fork.transform.localPosition, minX, speedTranslate * Time.deltaTime);
-            fork.transform.localPosition += Vector3.right * speedTranslate * Time.deltaTime;
+        // Limitar la rotación entre los valores especificados
+        currentXRotation = Mathf.Clamp(currentXRotation, minRotateAngle, maxRotationAngle);
 
-
-        }
+        // Aplicar la nueva rotación al objeto
+        mast.transform.localEulerAngles = new Vector3(currentXRotation, fork.transform.localEulerAngles.y, fork.transform.localEulerAngles.z);
 
 
     }
