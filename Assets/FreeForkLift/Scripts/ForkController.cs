@@ -4,7 +4,7 @@ using System.Collections;
 public class ForkController : MonoBehaviour {
 
     public Transform fork;
-    public Transform mast;
+    public Transform mastElev, mastRot;
     public float speedTranslate; //Platform travel speed
     public Vector3 maxY; //The maximum height of the platform
     public Vector3 minY; //The minimum height of the platform
@@ -35,7 +35,7 @@ public class ForkController : MonoBehaviour {
     {
         if (sideValue > 0.24f) // mover izquierda
         {
-            float targetX = fork.transform.localPosition.x - speedTranslate * sideValue * Time.deltaTime;
+            float targetX = fork.transform.localPosition.x + speedTranslate * sideValue * Time.deltaTime;
             targetX = Mathf.Clamp(targetX, minX, maxX); // Aplicar límites de movimiento
             Debug.Log(targetX);
             fork.transform.localPosition = new Vector3(targetX, fork.transform.localPosition.y, fork.transform.localPosition.z);
@@ -74,7 +74,7 @@ public class ForkController : MonoBehaviour {
             fork.transform.localPosition = Vector3.MoveTowards(fork.transform.localPosition, maxY, speedTranslate * elevValue * Time.deltaTime);
             if (mastMoveTrue)
             {
-                mast.transform.localPosition = Vector3.MoveTowards(mast.transform.localPosition, maxYmast, speedTranslate * elevValue * Time.deltaTime);
+                mastElev.transform.localPosition = Vector3.MoveTowards(mastElev.transform.localPosition, maxYmast, speedTranslate * elevValue * Time.deltaTime);
             }
 
         }
@@ -83,7 +83,7 @@ public class ForkController : MonoBehaviour {
             fork.transform.localPosition = Vector3.MoveTowards(fork.transform.localPosition, minY, speedTranslate * elevValue * Time.deltaTime);
             if (mastMoveTrue)
             {
-                mast.transform.localPosition = Vector3.MoveTowards(mast.transform.localPosition, minYmast, speedTranslate * elevValue * Time.deltaTime);
+                mastElev.transform.localPosition = Vector3.MoveTowards(mastElev.transform.localPosition, minYmast, speedTranslate * elevValue * Time.deltaTime);
 
             }
         }
@@ -104,7 +104,7 @@ public class ForkController : MonoBehaviour {
         }
 
         // Rotar el objeto en el eje X basado en la entrada del jugador
-        mast.transform.Rotate(Vector3.right, rotationInput * rotationSpeed * rotationValue * Time.deltaTime);
+        mastRot.transform.Rotate(Vector3.right, rotationInput * rotationSpeed * rotationValue * Time.deltaTime);
 
         // Limitar la rotación en el eje X
         float currentXRotation = fork.transform.localEulerAngles.x;
@@ -117,7 +117,7 @@ public class ForkController : MonoBehaviour {
         currentXRotation = Mathf.Clamp(currentXRotation, minRotateAngle, maxRotationAngle);
 
         // Aplicar la nueva rotación al objeto
-        mast.transform.localEulerAngles = new Vector3(currentXRotation, fork.transform.localEulerAngles.y, fork.transform.localEulerAngles.z);
+        mastRot.transform.localEulerAngles = new Vector3(currentXRotation, fork.transform.localEulerAngles.y, fork.transform.localEulerAngles.z);
 
 
     }
