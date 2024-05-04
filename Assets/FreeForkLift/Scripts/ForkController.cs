@@ -80,7 +80,7 @@ public class ForkController : MonoBehaviour {
             }
             if (mastMoveTrue)
             {
-                mastElev.transform.localPosition = Vector3.MoveTowards(mastElev.transform.localPosition, maxYmast, speedTranslate * elevValue * Time.deltaTime);
+                mastElev.transform.localPosition = Vector3.MoveTowards(mastElev.transform.localPosition, maxYmast, speedTranslate * elevValue * Time.deltaTime * -1f);
             }
         }
         if (elevValue > 0.24f) //mover abajo
@@ -91,7 +91,7 @@ public class ForkController : MonoBehaviour {
             }
             if (mastMoveTrue)
             {
-                mastElev.transform.localPosition = Vector3.MoveTowards(mastElev.transform.localPosition, minYmast, speedTranslate * elevValue * Time.deltaTime * -1f);
+                mastElev.transform.localPosition = Vector3.MoveTowards(mastElev.transform.localPosition, minYmast, speedTranslate * elevValue * Time.deltaTime);
             }
         }
     }
