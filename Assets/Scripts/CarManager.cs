@@ -1,19 +1,26 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Content.Interaction;
+
 
 
 public class SimpleCarController : MonoBehaviour
 {
     public List<AxleInfo> axleInfos;
     public float maxMotorTorque, gasInput, breakInput, clutchInput, maxSteeringAngle, currentSteeringAngle, currentGear, motorForce, rigiVelocity;
+    public bool handBrake;
     public Rigidbody yaleRigi;
     LogitechGSDK.LogiControllerPropertiesData properties;
+    public XRJoystick marchasLever;
+    
 
     private void Start()
     {
         print(LogitechGSDK.LogiSteeringInitialize(false));
         currentGear = 0;
+        handBrake = true;
     }
     // finds the corresponding visual wheel
     // correctly applies the transform
@@ -37,23 +44,32 @@ public class SimpleCarController : MonoBehaviour
     public void Update()
     {
         rigiVelocity = yaleRigi.velocity.magnitude;
-        if(rigiVelocity == 0)
+        if (handBrake)
+        {
+            breakInput =+ 10;
+        }
+        if(rigiVelocity < 20)
         {
             if(clutchInput == 1)
             {
-                if (Input.GetKeyDown(KeyCode.Alpha1))
-                {
-                    currentGear = 1;
-                }
-                if (Input.GetKeyDown(KeyCode.Alpha2))
-                {
-                    currentGear = 0;
-                }
-                if (Input.GetKeyDown(KeyCode.Alpha3))
-                {
-                    currentGear = -1;
-                }
+                marchasLever.gameObject.SetActive(true);
+                //if (Input.GetKeyDown(KeyCode.Alpha1))
+                //{
+                  //  currentGear = 1;
+                //}
+                //if (Input.GetKeyDown(KeyCode.Alpha2))
+                //{
+                  //  currentGear = 0;
+                //}
+                //if (Input.GetKeyDown(KeyCode.Alpha3))
+                //{
+                  //  currentGear = -1;
+                //}
             }
+        }
+        else
+        {
+            marchasLever.gameObject.SetActive(false);
         }
         if (LogitechGSDK.LogiUpdate() && LogitechGSDK.LogiIsConnected(0))
         {
@@ -110,8 +126,11 @@ public class SimpleCarController : MonoBehaviour
             }
             if (breakInput == 0)
             {
-                axleInfo.leftWheel.brakeTorque = 0;
-                axleInfo.rightWheel.brakeTorque = 0;
+                if (!handBrake)
+                {
+                    axleInfo.leftWheel.brakeTorque = 0;
+                    axleInfo.rightWheel.brakeTorque = 0;
+                }
             }
             if (axleInfo.steering)
             {
@@ -120,10 +139,7 @@ public class SimpleCarController : MonoBehaviour
             }
             if (axleInfo.motor)
             {
-                if(motorForce < 0)
-                {
-                    motorForce = 0;
-                }
+                
                 axleInfo.leftWheel.motorTorque = motorForce;
                 axleInfo.rightWheel.motorTorque = motorForce;
             }
@@ -135,6 +151,26 @@ public class SimpleCarController : MonoBehaviour
         currentSteeringAngle = (2*f - 1);
     }
 
+    public void GetMarchasValue(float x)
+    {
+        if (x < (-0.34))
+        {
+            currentGear = -1;
+        }
+        else if (x < 0.34f)
+        {
+            currentGear = 0;
+        }
+        else if (0.34f < x)
+        {
+            currentGear = 1;
+        }
+    }
+
+    public void GetHandBrake(bool b)
+    {
+        handBrake = b;
+    }
 }
 
 
