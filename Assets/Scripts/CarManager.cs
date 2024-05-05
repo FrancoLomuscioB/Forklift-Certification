@@ -53,18 +53,6 @@ public class SimpleCarController : MonoBehaviour
             if(clutchInput == 1)
             {
                 marchasLever.gameObject.SetActive(true);
-                //if (Input.GetKeyDown(KeyCode.Alpha1))
-                //{
-                  //  currentGear = 1;
-                //}
-                //if (Input.GetKeyDown(KeyCode.Alpha2))
-                //{
-                  //  currentGear = 0;
-                //}
-                //if (Input.GetKeyDown(KeyCode.Alpha3))
-                //{
-                  //  currentGear = -1;
-                //}
             }
         }
         else
@@ -93,10 +81,6 @@ public class SimpleCarController : MonoBehaviour
             {
                 clutchInput = 1;
             }
-        }
-        else
-        {
-            print("No Steering Wheel connected!");
         }
     }
 
