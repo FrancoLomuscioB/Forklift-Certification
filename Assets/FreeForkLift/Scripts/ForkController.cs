@@ -26,6 +26,9 @@ public class ForkController : MonoBehaviour {
     private bool mastMoveTrue = false;
     private bool moveFork = true;
 
+    public bool forkBeep = false;
+    public bool forkBeep2 = false;
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -38,14 +41,17 @@ public class ForkController : MonoBehaviour {
     {
         if (sideValue > 0.24f) // mover izquierda
         {
+            forkBeep = true;
             float targetX = fork.transform.localPosition.x + speedTranslate * sideValue * Time.deltaTime * -1f;
             targetX = Mathf.Clamp(targetX, minX, maxX); // Aplicar límites de movimiento
             Debug.Log(targetX);
             fork.transform.localPosition = new Vector3(targetX, fork.transform.localPosition.y, fork.transform.localPosition.z);
         }
+        
 
         if (sideValue < -0.24f) // mover derecha
         {
+            forkBeep = true;
             float targetX = fork.transform.localPosition.x + speedTranslate * sideValue * Time.deltaTime * -1f;
             targetX = Mathf.Clamp(targetX, minX, maxX); // Aplicar límites de movimiento
             Debug.Log(targetX);
@@ -76,6 +82,7 @@ public class ForkController : MonoBehaviour {
         {
             if (moveFork)
             {
+                forkBeep2 = true;
                 fork.transform.localPosition = Vector3.MoveTowards(fork.transform.localPosition, new Vector3(fork.transform.localPosition.x, fork.transform.localPosition.y, maxY.z) , speedTranslate * elevValue * Time.deltaTime * -1f);
             }
             if (mastMoveTrue)
@@ -87,6 +94,7 @@ public class ForkController : MonoBehaviour {
         {
             if (moveFork)
             {
+                forkBeep2 = true;
                 fork.transform.localPosition = Vector3.MoveTowards(fork.transform.localPosition, new Vector3(fork.transform.localPosition.x, fork.transform.localPosition.y, minY.z), speedTranslate * elevValue * Time.deltaTime);
             }
             if (mastMoveTrue)
@@ -106,7 +114,7 @@ public class ForkController : MonoBehaviour {
         {
             rotValue = mastRot.transform.localEulerAngles.x - 360;
         }
-        Debug.Log("rotation: " + rotValue);
+        //Debug.Log("rotation: " + rotValue);
         if (rotationValue > 0.24f)
         {
             rotationInput = 1f;
