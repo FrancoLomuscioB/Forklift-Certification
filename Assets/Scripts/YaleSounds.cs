@@ -24,10 +24,6 @@ public class YaleSounds : MonoBehaviour
 
   void Update()
   {
-    if (fork.moveFork)
-    {
-      beepSound2.Play();
-    }
     EngineSounds();
     BeepSounds();
     HorquillaSounds();
