@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
+    public int objetivosTomados;
 
 
     private void OnTriggerEnter(Collider other)
@@ -12,6 +13,7 @@ public class Test : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             gameObject.SetActive(false);
+            objetivosTomados++;
         }
     }
 }
