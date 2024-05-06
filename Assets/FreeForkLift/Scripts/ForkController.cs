@@ -24,7 +24,7 @@ public class ForkController : MonoBehaviour {
     public float elevValue, sideValue, rotationValue;
 
     private bool mastMoveTrue = false;
-    private bool moveFork = true;
+    public bool moveFork = true;
 
     public bool forkBeep = false;
     public bool forkBeep2 = false;

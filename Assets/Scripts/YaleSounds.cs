@@ -13,6 +13,8 @@ public class YaleSounds : MonoBehaviour
   public float pitchMultiplier = 0.1f; // Factor de multiplicación para ajustar el pitch
   public ForkController fork;
 
+  public AudioSource choque;
+
   
 
   void Start()
@@ -22,9 +24,29 @@ public class YaleSounds : MonoBehaviour
 
   void Update()
   {
+    if (fork.moveFork)
+    {
+      beepSound2.Play();
+    }
     EngineSounds();
     BeepSounds();
     HorquillaSounds();
+  }
+
+  private void OnCollisionEnter(Collision collision)
+  {
+    float direction = Vector3.Dot(forkRb.velocity, transform.forward);
+    if (collision.gameObject.CompareTag("Cono") && direction > 1)
+    {
+      choque.Play();
+    }
+    else
+    {
+      if (collision.gameObject.CompareTag("Cono") && direction > -1)
+      {
+        choque.Play(); 
+      }
+    }
   }
 
   void EngineSounds()
@@ -52,16 +74,12 @@ public class YaleSounds : MonoBehaviour
     {
       beepSound.Play();
     }
-    else
-    {
-      beepSound.Stop();
-    }
-    
+
   }
 
   void HorquillaSounds()
   {
-    if (fork.forkBeep2)
+    if (fork.moveFork)
     {
       beepSound2.Play();
       Debug.Log("bep2");
