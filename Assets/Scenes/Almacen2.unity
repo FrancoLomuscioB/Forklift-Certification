@@ -4864,20 +4864,20 @@ MonoBehaviour:
   yellowBox: 0
   redBox: 0
   greenBox: 0
-  conoCollider1: {fileID: 0}
-  conoCollider2: {fileID: 0}
-  conoCollider3: {fileID: 0}
-  cono1: {fileID: 0}
-  cono2: {fileID: 0}
-  cono3: {fileID: 0}
-  cono4: {fileID: 0}
-  yaleObjective1: {fileID: 0}
-  yaleObjective2: {fileID: 0}
-  yellowObjective: {fileID: 0}
-  yaleObjective3: {fileID: 0}
-  redObjective: {fileID: 0}
-  greenObjective: {fileID: 0}
-  yaleObjective4: {fileID: 0}
+  conoCollider1: {fileID: 464473136}
+  conoCollider2: {fileID: 561279177}
+  conoCollider3: {fileID: 684697926}
+  cono1: {fileID: 1061229806}
+  cono2: {fileID: 1061229806}
+  cono3: {fileID: 1364714988}
+  cono4: {fileID: 559231249}
+  yaleObjective1: {fileID: 1979928568}
+  yaleObjective2: {fileID: 1568787769}
+  yellowObjective: {fileID: 704306395}
+  yaleObjective3: {fileID: 1271626739}
+  redObjective: {fileID: 2077600429}
+  greenObjective: {fileID: 1798041185}
+  yaleObjective4: {fileID: 1481341600}
 --- !u!4 &173552238
 Transform:
   m_ObjectHideFlags: 0
@@ -19004,6 +19004,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e28725f42cae27e48b935d3aff7ebc19, type: 3}
+--- !u!1 &559231249 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8254437370335040494, guid: e28725f42cae27e48b935d3aff7ebc19, type: 3}
+  m_PrefabInstance: {fileID: 559231248}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &561279177
 GameObject:
   m_ObjectHideFlags: 0
@@ -37670,6 +37675,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e28725f42cae27e48b935d3aff7ebc19, type: 3}
+--- !u!1 &1061229806 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8254437370335040494, guid: e28725f42cae27e48b935d3aff7ebc19, type: 3}
+  m_PrefabInstance: {fileID: 1061229805}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1065521313
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48979,6 +48989,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e28725f42cae27e48b935d3aff7ebc19, type: 3}
+--- !u!1 &1364714988 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8254437370335040494, guid: e28725f42cae27e48b935d3aff7ebc19, type: 3}
+  m_PrefabInstance: {fileID: 1364714987}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1366153363
 GameObject:
   m_ObjectHideFlags: 0
