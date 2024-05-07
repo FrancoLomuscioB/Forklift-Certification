@@ -93,6 +93,7 @@ public class GameManager : MonoBehaviour
 
     public void TestAudios()
     {
+        testCounter = 1;
         pushButton.SetActive(false);
         if (test.Length == 0)
         {
