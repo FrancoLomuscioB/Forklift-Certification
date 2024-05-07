@@ -6,16 +6,53 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public float testCounter, conoCounter;
-    // Start is called before the first frame update
-    void Start()
+    public GameManager instance;
+
+    private void Awake()
     {
-        
+        if(instance != null)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        switch (testCounter)
+        {
+            case 1:
+                ConosTest();
+                break;
+
+            case 2:
+                SecondTest();
+                break;
+
+            case 3:
+                FinalTest();
+                break;
+
+        }
+    }
+
+    public void ConosTest()
+    {
+
+    }
+
+    public void SecondTest()
+    {
+
+    }
+
+    public void FinalTest()
+    {
+
     }
 
     public void EndGame()
