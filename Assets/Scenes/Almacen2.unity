@@ -5194,6 +5194,7 @@ MonoBehaviour:
   redObjective: {fileID: 2077600429}
   greenObjective: {fileID: 1798041185}
   yaleObjective4: {fileID: 1481341600}
+  currentAnim: {fileID: 0}
   test:
   - {fileID: 8300000, guid: e9ef423f819041d49b2b0a50836e2f86, type: 3}
   - {fileID: 8300000, guid: 7a8e8e3d2c4c356469d5a9cc03fd4f2d, type: 3}
@@ -32945,7 +32946,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -50504,8 +50505,9 @@ Animation:
   m_GameObject: {fileID: 1369967716}
   m_Enabled: 1
   serializedVersion: 4
-  m_Animation: {fileID: 0}
-  m_Animations: []
+  m_Animation: {fileID: 7400000, guid: a43e25ec83802014a854476ec6265e6b, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: a43e25ec83802014a854476ec6265e6b, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
