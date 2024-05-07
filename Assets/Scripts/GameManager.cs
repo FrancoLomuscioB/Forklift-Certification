@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     public AudioSource radioBeep;
     public int indiceTest = 0;
     public int indiceInstrucciones = 0;
+    public List<GameObject> animResaltado;
+
     private void Awake()
     {
         if(instance != null)
@@ -33,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        
         audioActual = GetComponent<AudioSource>();
         InstruccionesAudios();
         testCounter = 0;
@@ -47,6 +50,23 @@ public class GameManager : MonoBehaviour
         {
             AvanzarInstruccion();
         }
+    }
+
+    void ActivarAnim(int index)
+    {
+        animResaltado[index].SetActive(true);
+    }
+
+    void AnimResaltados()
+    {
+        if (indiceInstrucciones < animResaltado.Count - 1)
+        {
+            animResaltado[indiceInstrucciones].SetActive(false);
+            ActivarAnim(indiceInstrucciones);
+            
+        }
+        
+        
     }
 
     public void InstruccionesAudios()
@@ -81,6 +101,7 @@ public class GameManager : MonoBehaviour
                 audioActual.Stop();
                 radioNoises.Stop();
                 indiceInstrucciones++;
+                AnimResaltados();
                 audioActual.clip = instruccionesClips[indiceInstrucciones];
                 audioActual.Play();
                 radioNoises.Play(); 
