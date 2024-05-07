@@ -78,6 +78,8 @@ public class GameManager : MonoBehaviour
         {
             if ((indiceInstrucciones < instruccionesClips.Count - 1))
             {
+                audioActual.Stop();
+                radioNoises.Stop();
                 indiceInstrucciones++;
                 audioActual.clip = instruccionesClips[indiceInstrucciones];
                 audioActual.Play();
@@ -118,6 +120,8 @@ public class GameManager : MonoBehaviour
     {
         if (instructoAudioPlaying)
         {
+            audioActual.Stop();
+            radioNoises.Stop();
             instructoAudioPlaying = false;
             audioActual.Stop();
             TestAudios();
@@ -182,6 +186,8 @@ public class GameManager : MonoBehaviour
         conoCounter += 1;
         if (instructoAudioPlaying)
         {
+            audioActual.Stop();
+            radioNoises.Stop();
             instructoAudioPlaying = false;
             audioActual.Stop();
             TestAudios();

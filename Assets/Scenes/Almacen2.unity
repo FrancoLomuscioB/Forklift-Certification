@@ -4872,7 +4872,7 @@ MonoBehaviour:
   conoCollider2: {fileID: 561279177}
   conoCollider3: {fileID: 684697926}
   cono1: {fileID: 1061229806}
-  cono2: {fileID: 1061229806}
+  cono2: {fileID: 527097539}
   cono3: {fileID: 1364714988}
   cono4: {fileID: 559231249}
   yaleObjective1: {fileID: 1979928568}
@@ -17389,6 +17389,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e28725f42cae27e48b935d3aff7ebc19, type: 3}
+--- !u!1 &527097539 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8254437370335040494, guid: e28725f42cae27e48b935d3aff7ebc19, type: 3}
+  m_PrefabInstance: {fileID: 527097538}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &528822616
 GameObject:
   m_ObjectHideFlags: 0
