@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public float testCounter, conoCounter;
+    public bool conoReverse;
     public GameManager instance;
 
     private void Awake()
