@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR.Interaction.Toolkit.Samples.Hands;
 
 public class GameManager : MonoBehaviour
 {
     public float testCounter, conoCounter, choqueCounter;
-    public bool conoReverse, yellowBox, redBox, greenBox;
+    public bool conoReverse, yellowBox, redBox, greenBox, instructoAudioPlaying;
     public static GameManager instance;
-    public GameObject conoCollider1, conoCollider2, conoCollider3, cono1, cono2, cono3, cono4, yaleObjective1, yaleObjective2, yellowObjective, yaleObjective3, redObjective, greenObjective, yaleObjective4;
+    public GameObject conoCollider1, conoCollider2, conoCollider3, cono1, cono2, cono3, cono4, yaleObjective1, yaleObjective2, yellowObjective, yaleObjective3, redObjective, greenObjective, yaleObjective4, pushButton;
 
     public AudioClip[] test;
     public List<AudioClip> instruccionesClips;
@@ -34,15 +35,18 @@ public class GameManager : MonoBehaviour
     {
         audioActual = GetComponent<AudioSource>();
         InstruccionesAudios();
-        testCounter = 1;
+        testCounter = 0;
         conoCounter = 0;
+        instructoAudioPlaying = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-       AvanzarInstruccion();
-
+        if (instructoAudioPlaying)
+        {
+            AvanzarInstruccion();
+        }
     }
 
     public void InstruccionesAudios()
@@ -67,6 +71,8 @@ public class GameManager : MonoBehaviour
         {
             audioActual.Stop();
             radioNoises.Stop();
+            TestAudios();
+            instructoAudioPlaying = false;
         }
         else if (!audioActual.isPlaying)
         {
@@ -80,9 +86,14 @@ public class GameManager : MonoBehaviour
         }
     }
     
+    public void AudioButton()
+    {
+        audioActual.Stop();
+    }
 
     public void TestAudios()
     {
+        pushButton.SetActive(false);
         if (test.Length == 0)
         {
             Debug.Log("asigna un audio");
@@ -96,11 +107,10 @@ public class GameManager : MonoBehaviour
 
     public void TestActualAudio()
     {
+        audioActual.Stop();
         indiceTest = (indiceTest + 1) % test.Length;
         audioActual.clip = test[indiceTest];
         audioActual.Play();
-        
-
     }
 
     public void ConosTest()
