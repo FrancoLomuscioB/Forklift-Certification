@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class GreenMaster : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Material blueMat, myMat;
+
+    private void Awake()
     {
-        
+        myMat = GetComponent<Renderer>().material;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("GreenBox"))
+        {
+            GameManager.instance.GreenBoxCheck();
+            GetComponent<Renderer>().material = blueMat;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerExit(Collider other)
     {
-        
+        if (other.CompareTag("GreenBox"))
+        {
+            GameManager.instance.GreenBoxCheck();
+            GetComponent<Renderer>().material = myMat;
+        }
     }
 }

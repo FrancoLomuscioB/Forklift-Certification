@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class YellowMaster : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Material blueMat, myMat;
+
+    private void Awake()
     {
-        
+        myMat = GetComponent<Renderer>().material;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.CompareTag("YellowBox"))
+        {
+            GameManager.instance.YellowBoxCheck();
+            GetComponent<Renderer>().material = blueMat;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("YellowBox"))
+        {
+            GameManager.instance.YellowBoxCheck();
+            GetComponent<Renderer>().material = myMat;
+        }
     }
 }

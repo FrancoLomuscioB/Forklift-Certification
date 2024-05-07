@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public float testCounter, conoCounter, choqueCounter;
     public bool conoReverse, yellowBox, redBox, greenBox;
     public static GameManager instance;
-    public GameObject conoCollider1, conoCollider2, conoCollider3, cono1, cono2, cono3, yaleObjective1, yaleObjective2, yellowObjective, yaleObjective3, redObjective, greenObjective, yaleObjective4;
+    public GameObject conoCollider1, conoCollider2, conoCollider3, cono1, cono2, cono3, cono4, yaleObjective1, yaleObjective2, yellowObjective, yaleObjective3, redObjective, greenObjective, yaleObjective4;
 
     private void Awake()
     {
@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
                     cono1.SetActive(false);
                     cono2.SetActive(false);
                     cono3.SetActive(false);
+                    cono4.SetActive(false);
                     yaleObjective2.SetActive(false);
                     testCounter = 2;
                 }

@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class RedMaster : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Material blueMat, myMat;
+
+    private void Awake()
     {
-        
+        myMat = GetComponent<Renderer>().material;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.CompareTag("RedBox"))
+        {
+            GameManager.instance.RedBoxCheck();
+            GetComponent<Renderer>().material = blueMat;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("RedBox"))
+        {
+            GameManager.instance.RedBoxCheck();
+            GetComponent<Renderer>().material = myMat;
+        }
     }
 }
