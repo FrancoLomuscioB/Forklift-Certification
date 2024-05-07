@@ -14,7 +14,7 @@ public class Menu : MonoBehaviour
 
         public void StartGame()
         {
-            SceneManager.LoadScene("Levels");
+            SceneManager.LoadScene("Almacen2");
         Debug.Log("cai en la locura");
         }
  
