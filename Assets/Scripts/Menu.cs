@@ -14,10 +14,17 @@ public class Menu : MonoBehaviour
 
         public void StartGame()
         {
-            Destroy(GameManager.instance.gameObject);
+            
             SceneManager.LoadScene("Almacen2");
-            Debug.Log("cai en la locura");
+            
         }
- 
-   
+
+    public void RestartGame()
+    {
+        Destroy(GameManager.instance.gameObject);
+        SceneManager.LoadScene("Almacen2");
+       
+    }
+
+
 }
