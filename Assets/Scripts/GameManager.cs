@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public float testCounter, conoCounter, choqueCounter;
     public bool conoReverse, yellowBox, redBox, greenBox, instructoAudioPlaying;
     public static GameManager instance;
-    public GameObject conoCollider1, conoCollider2, conoCollider3, cono1, cono2, cono3, cono4, yaleObjective1, yaleObjective2, yellowObjective, yaleObjective3, redObjective, greenObjective, yaleObjective4, pushButton;
+    public GameObject conoCollider1, conoCollider2, conoCollider3, cono1, cono2, cono3, cono4, yaleObjective1, yaleObjective2, yellowObjective, yaleObjective3, redObjective, greenObjective, yaleObjective4;
 
     public AudioClip[] test;
     public List<AudioClip> instruccionesClips;
@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
     public void TestAudios()
     {
         testCounter = 1;
-        pushButton.SetActive(false);
+        
         if (test.Length == 0)
         {
             Debug.Log("asigna un audio");
@@ -145,7 +145,9 @@ public class GameManager : MonoBehaviour
                     cono3.SetActive(false);
                     cono4.SetActive(false);
                     yaleObjective2.SetActive(false);
+                    yaleObjective3.SetActive(true);
                     testCounter = 2;
+                    yellowObjective.SetActive(true);
                     TestActualAudio();
                 }
                 break;
