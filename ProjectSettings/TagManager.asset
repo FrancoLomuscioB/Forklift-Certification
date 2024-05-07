@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Vehicle
   - Cono
+  - YellowBox
+  - GreenBox
+  - RedBox
   layers:
   - Default
   - TransparentFX
