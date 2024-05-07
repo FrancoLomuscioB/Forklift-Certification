@@ -16,7 +16,7 @@ MonoBehaviour:
     m_SettingsList: []
     m_RuntimeSettings: []
   m_AssetVersion: 5
-  m_DefaultVolumeProfile: {fileID: 11400000, guid: 7711e0023e74b474b8d7a1bffc976139, type: 2}
+  m_DefaultVolumeProfile: {fileID: 0}
   m_RenderingLayerNames:
   - Default
   m_ValidRenderingLayers: 1
@@ -43,7 +43,7 @@ MonoBehaviour:
   m_ShaderStrippingSetting:
     m_Version: 0
     m_ExportShaderVariants: 1
-    m_ShaderVariantLogLevel: 1
+    m_ShaderVariantLogLevel: 0
     m_StripRuntimeDebugShaders: 1
   m_URPShaderStrippingSetting:
     m_Version: 0

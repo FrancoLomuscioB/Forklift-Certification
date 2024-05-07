@@ -3,12 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Vehicle
+  - Cono
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - PostProcces
   - Water
   - UI
   - 
