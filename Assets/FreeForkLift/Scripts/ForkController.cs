@@ -29,6 +29,8 @@ public class ForkController : MonoBehaviour {
     public bool forkBeep = false;
     public bool forkBeep2 = false;
 
+    public bool isRoting, isUpping, isLateraling;
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -44,7 +46,6 @@ public class ForkController : MonoBehaviour {
             forkBeep = true;
             float targetX = fork.transform.localPosition.x + speedTranslate * sideValue * Time.deltaTime * -1f;
             targetX = Mathf.Clamp(targetX, minX, maxX); // Aplicar límites de movimiento
-            Debug.Log(targetX);
             fork.transform.localPosition = new Vector3(targetX, fork.transform.localPosition.y, fork.transform.localPosition.z);
         }
         
@@ -54,7 +55,6 @@ public class ForkController : MonoBehaviour {
             forkBeep = true;
             float targetX = fork.transform.localPosition.x + speedTranslate * sideValue * Time.deltaTime * -1f;
             targetX = Mathf.Clamp(targetX, minX, maxX); // Aplicar límites de movimiento
-            Debug.Log(targetX);
             fork.transform.localPosition = new Vector3(targetX, fork.transform.localPosition.y, fork.transform.localPosition.z);
         }
 
@@ -114,13 +114,11 @@ public class ForkController : MonoBehaviour {
         {
             rotValue = mastRot.transform.localEulerAngles.x - 360;
         }
-        //Debug.Log("rotation: " + rotValue);
         if (rotationValue > 0.24f)
         {
             rotationInput = 1f;
             if (rotValue < maxRotationAngle)
             {
-                Debug.Log("Rotando abajo");
                 mastRot.transform.Rotate(Vector3.right, rotationInput * rotationSpeed * rotationValue * Time.deltaTime);
             }
         }
@@ -129,7 +127,6 @@ public class ForkController : MonoBehaviour {
             rotationInput = 1f;
             if (rotValue > minRotateAngle)
             {
-                Debug.Log("Rotando arriba");
                 mastRot.transform.Rotate(Vector3.right, rotationInput * rotationSpeed * rotationValue * Time.deltaTime);
             }
         }
@@ -142,15 +139,39 @@ public class ForkController : MonoBehaviour {
     public void GetRotValue(float x)
     {
         rotationValue = x;
+        if(x != 0)
+        {
+            isRoting = true;
+        }
+        else
+        {
+            isRoting = false;
+        }
     }
 
     public void GetElevValue(float x)
     {
         elevValue = x;
+        if (x != 0)
+        {
+            isRoting = true;
+        }
+        else
+        {
+            isRoting = false;
+        }
     }
 
     public void GetSideValue(float x)
     {
         sideValue = x;
+        if (x != 0)
+        {
+            isRoting = true;
+        }
+        else
+        {
+            isRoting = false;
+        }
     }
 }

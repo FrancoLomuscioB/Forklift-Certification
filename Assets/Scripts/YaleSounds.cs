@@ -75,20 +75,20 @@ public class YaleSounds : MonoBehaviour
 
   void HorquillaSounds()
   {
-    if (fork.moveFork)
-    {
-      beepSound2.Play();
-      Debug.Log("bep2");
-    }
-   
-
-    if (fork.forkBeep)
-    {
-      Debug.Log("bep3");
-      beepSound3.Play();
-    }
-    
+      if (fork.isRoting)
+      {
+          if (!beepSound2.isPlaying)
+          {
+                beepSound2.Play();
+                Debug.Log("bep2");
+          }
+      }
+        if (!fork.isRoting)
+        {
+            if (beepSound2.isPlaying)
+            {
+                beepSound2.Stop();
+            }
+        }
   }
-
-
 }
