@@ -55,6 +55,11 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void AddConoCounter()
+    {
+        conoCounter += 1;
+    }
+
     public void EndGame()
     {
         SceneManager.LoadScene("Levels");
