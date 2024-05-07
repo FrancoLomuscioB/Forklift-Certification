@@ -116,6 +116,12 @@ public class GameManager : MonoBehaviour
 
     public void ConosTest()
     {
+        if (instructoAudioPlaying)
+        {
+            instructoAudioPlaying = false;
+            audioActual.Stop();
+            TestAudios();
+        }
         switch (conoReverse)
         {
             case false:
@@ -172,6 +178,12 @@ public class GameManager : MonoBehaviour
     public void AddConoCounter()
     {
         conoCounter += 1;
+        if (instructoAudioPlaying)
+        {
+            instructoAudioPlaying = false;
+            audioActual.Stop();
+            TestAudios();
+        }
     }
 
     public void YellowBoxCheck()
